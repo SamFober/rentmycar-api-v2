@@ -6,7 +6,7 @@ import java.util.*
 
 
 data class User(
-    val userId: UUID? = null,
+    val userId: UUID,
     val createdAt: LocalDateTime,
     val firstName: String,
     val lastName: String,

@@ -19,8 +19,8 @@ class UserDAO(id: EntityID<UUID>) : UUIDEntity(id) {
     var password by UserTable.password
     var dateOfBirth by UserTable.dateOfBirth
     var address by UserTable.address
-    val postalCode by UserTable.postalCode
-    val city by UserTable.city
+    var postalCode by UserTable.postalCode
+    var city by UserTable.city
     var phoneNumber by UserTable.phoneNumber
 }
 
