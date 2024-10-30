@@ -11,7 +11,7 @@ paths:
       description: ""
       requestBody:
         content:
-          '*/*':
+          'application/json':
             schema:
               $ref: "#/components/schemas/LoginRequest"
         required: true
@@ -19,7 +19,7 @@ paths:
         "200":
           description: "OK"
           content:
-            '*/*':
+            'application/json':
               schema:
                 $ref: "#/components/schemas/LoginResponse"
 components:

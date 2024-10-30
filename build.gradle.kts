@@ -31,7 +31,7 @@ dependencies {
     implementation("io.ktor:ktor-server-auth-jwt-jvm")
     implementation("io.ktor:ktor-server-host-common-jvm")
     implementation("io.ktor:ktor-server-status-pages-jvm")
-    implementation("io.ktor:ktor-server-openapi")
+    implementation("io.ktor:ktor-server-swagger")
     implementation("io.ktor:ktor-server-content-negotiation-jvm")
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
     implementation("org.jetbrains.exposed:exposed-java-time:$exposed_version")
