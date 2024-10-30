@@ -5,6 +5,12 @@ ktor:
   deployment:
     port: 8080
 jwt:
-  domain: "https://jwt-provider-domain/"
-  audience: "jwt-audience"
-  realm: "ktor sample app"
+  domain: "http://localhost"
+  audience: "my-audience"
+  realm: "rentmycar-api"
+  secret: "11e39374677c45e7a08dceead43a9ae256c775239b42852af26bda70e6b7cada"
+
+db:
+  url: "jdbc:mysql://localhost:3306/rentmycar"
+  username: "root"
+  password: ""

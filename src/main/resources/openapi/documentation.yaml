@@ -1,23 +1,46 @@
-openapi: "3.0.3"
+openapi: "3.1.0"
 info:
-  title: "Application API"
-  description: "Application API"
+  title: "rentmycar_api_v2 API"
+  description: "rentmycar_api_v2 API"
   version: "1.0.0"
 servers:
-  - url: "http://0.0.0.0:8080"
+  - url: "https://rentmycar_api_v2"
 paths:
-  /:
-    get:
-      description: "Hello World!"
+  /auth/login:
+    post:
+      description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+        required: true
       responses:
         "200":
           description: "OK"
           content:
-            text/plain:
+            '*/*':
               schema:
-                type: "string"
-              examples:
-                Example#1:
-                  value: "Hello World!"
+                $ref: "#/components/schemas/LoginResponse"
 components:
-  schemas: { }
+  schemas:
+    LoginRequest:
+      type: "object"
+      properties:
+        emailAddress:
+          type: "string"
+        password:
+          type: "string"
+      required:
+        - "emailAddress"
+        - "password"
+    LoginResponse:
+      type: "object"
+      properties:
+        accessToken:
+          type: "string"
+        refreshToken:
+          type: "string"
+      required:
+        - "accessToken"
+        - "refreshToken"
