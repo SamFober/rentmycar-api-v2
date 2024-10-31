@@ -1,17 +1,17 @@
 openapi: "3.1.0"
 info:
-  title: "rentmycar_api_v2 API"
-  description: "rentmycar_api_v2 API"
+  title: "RentMyCar API V2"
+  description: "API for the RentMyCar app"
   version: "1.0.0"
 servers:
-  - url: "https://rentmycar_api_v2"
+  - url: "https://localhost:8080"
 paths:
   /auth/login:
     post:
       description: ""
       requestBody:
         content:
-          'application/json':
+          '*/*':
             schema:
               $ref: "#/components/schemas/LoginRequest"
         required: true
@@ -19,9 +19,25 @@ paths:
         "200":
           description: "OK"
           content:
-            'application/json':
+            '*/*':
               schema:
                 $ref: "#/components/schemas/LoginResponse"
+  /auth/register:
+    post:
+      description: ""
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/Unit"
 components:
   schemas:
     LoginRequest:
@@ -44,3 +60,40 @@ components:
       required:
         - "accessToken"
         - "refreshToken"
+    LocalDate:
+      type: "object"
+      properties: { }
+    RegisterRequest:
+      type: "object"
+      properties:
+        firstName:
+          type: "string"
+        lastName:
+          type: "string"
+        dateOfBirth:
+          $ref: "#/components/schemas/LocalDate"
+        email:
+          type: "string"
+        password:
+          type: "string"
+        address:
+          type: "string"
+        postalCode:
+          type: "string"
+        city:
+          type: "string"
+        phoneNumber:
+          type: "string"
+      required:
+        - "firstName"
+        - "lastName"
+        - "dateOfBirth"
+        - "email"
+        - "password"
+        - "address"
+        - "postalCode"
+        - "city"
+        - "phoneNumber"
+    Unit:
+      type: "object"
+      properties: { }

@@ -20,6 +20,7 @@ fun Application.configureStatusPages() {
             call.respondText(text = "404: ${cause.message}", status = HttpStatusCode.NotFound)
         }
         exception<Throwable> { call, cause ->
+            cause.printStackTrace()
             call.respondText(text = "500: ${cause.message}", status = HttpStatusCode.InternalServerError)
         }
     }
