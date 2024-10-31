@@ -29,7 +29,13 @@ class AuthController(
             val accessToken = tokenManager.generateAccessToken(user)
             val refreshToken = tokenManager.generateRefreshToken(user)
 
-            return LoginResponse(accessToken = accessToken, refreshToken = refreshToken)
+            return LoginResponse(
+                id = user.userId.toString(),
+                firstName = user.firstName,
+                lastName = user.lastName,
+                accessToken = accessToken,
+                refreshToken = refreshToken
+            )
         } else {
             throw UnauthorizedException("Incorrect email/password")
         }
