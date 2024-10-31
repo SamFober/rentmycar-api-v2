@@ -7,6 +7,7 @@ import io.ktor.server.routing.*
 import nl.avans.auth.data.requests.LoginRequest
 import nl.avans.auth.data.requests.RegisterRequest
 
+
 fun Route.authRoutes(controller: AuthController) {
     route("/auth") {
         post("/login") {

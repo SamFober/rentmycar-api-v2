@@ -10,6 +10,7 @@ fun main(args: Array<String>) {
 fun Application.module() {
     configureSecurity()
     configureHTTP()
+    configureKoin()
     configureSerialization()
     configureStatusPages()
     configureDatabases()
