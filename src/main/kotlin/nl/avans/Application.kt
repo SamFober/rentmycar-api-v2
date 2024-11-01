@@ -8,9 +8,12 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
+    //Koin NEEDS to start first because we need the dependencies for the remaining plugins.
+    configureKoin()
     configureSecurity()
     configureHTTP()
     configureSerialization()
+    configureStatusPages()
     configureDatabases()
     configureRouting()
 }

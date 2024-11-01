@@ -40,7 +40,7 @@ class UserRepository : IUserRepository {
     }
 
     override suspend fun update(entity: User): Boolean = suspendTransaction {
-        UserDAO.findByIdAndUpdate(entity.userId) {
+        UserDAO.findByIdAndUpdate(entity.userId!!) {
             it.firstName = entity.firstName
             it.lastName = entity.lastName
             it.email = entity.email
