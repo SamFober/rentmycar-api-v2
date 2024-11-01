@@ -19,5 +19,9 @@ fun Route.userRoutes(controller: UserController) {
                 call.respond(HttpStatusCode.OK, controller.updateUser(request, UUID.fromString(userId)))
             }
         }
+        get("/{userId}") {
+            val id = call.parameters["userId"] ?: call.respond(HttpStatusCode.BadRequest, "Invalid user ID")
+            call.respond(HttpStatusCode.OK, controller.getUserById(UUID.fromString(id.toString())))
+        }
     }
 }

@@ -2,8 +2,11 @@ package nl.avans.user
 
 import kotlinx.datetime.toJavaLocalDate
 import nl.avans.plugins.BadRequestException
+import nl.avans.plugins.NotFoundException
 import nl.avans.user.data.IUserRepository
+import nl.avans.user.data.mappers.toUserResponse
 import nl.avans.user.data.requests.UpdateUserRequest
+import nl.avans.user.data.response.UserResponse
 import nl.avans.user.domain.User
 import nl.avans.user.domain.UserAddress
 import java.util.*
@@ -32,5 +35,9 @@ class UserController(
             )
         )
 
+    }
+
+    suspend fun getUserById(userId: UUID): UserResponse {
+        return userRepository.findById(userId)?.toUserResponse() ?: throw NotFoundException("User not found")
     }
 }

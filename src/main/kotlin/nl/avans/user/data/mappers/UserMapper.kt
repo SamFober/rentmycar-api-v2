@@ -1,23 +1,35 @@
 package nl.avans.user.data.mappers
 
-import kotlinx.datetime.toJavaLocalDate
-import nl.avans.auth.data.requests.RegisterRequest
+
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import nl.avans.user.data.response.AddressResponse
+import nl.avans.user.data.response.UserResponse
 import nl.avans.user.domain.User
-import nl.avans.user.domain.UserAddress
-import java.time.LocalDateTime
 
 
-fun RegisterRequest.toUser(): User = User(
-    createdAt = LocalDateTime.now(),
-    firstName = firstName,
-    lastName = lastName,
-    email = email,
-    password = password,
-    dateOfBirth = dateOfBirth.toJavaLocalDate(),
-    address = UserAddress(
-        address = address,
-        postalCode = postalCode,
-        city = city,
-        phoneNumber = phoneNumber
+fun User.toUserResponse() = UserResponse(
+    userId = this.userId!!.toString(),
+    createdAt = LocalDateTime(
+        this.createdAt.year,
+        this.createdAt.month,
+        this.createdAt.dayOfMonth,
+        this.createdAt.hour,
+        this.createdAt.minute,
+        this.createdAt.second
+    ),
+    firstName = this.firstName,
+    lastName = this.lastName,
+    email = this.email,
+    dateOfBirth = LocalDate(
+        this.dateOfBirth.year,
+        this.dateOfBirth.month,
+        this.dateOfBirth.dayOfMonth
+    ),
+    address = AddressResponse(
+        address = this.address.address,
+        postalCode = this.address.postalCode,
+        city = this.address.city,
+        phoneNumber = this.address.phoneNumber
     )
 )
