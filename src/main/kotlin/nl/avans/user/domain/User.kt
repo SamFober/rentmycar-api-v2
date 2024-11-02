@@ -15,3 +15,8 @@ data class User(
     val dateOfBirth: LocalDate,
     val address: UserAddress
 )
+
+enum class Role {
+    USER,
+    ADMIN
+}

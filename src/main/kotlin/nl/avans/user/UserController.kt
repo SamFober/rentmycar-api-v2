@@ -40,4 +40,8 @@ class UserController(
     suspend fun getUserById(userId: UUID): UserResponse {
         return userRepository.findById(userId)?.toUserResponse() ?: throw NotFoundException("User not found")
     }
+
+    suspend fun deleteUser(userId: UUID) {
+        if (!userRepository.delete(userId)) throw NotFoundException("User not found")
+    }
 }
